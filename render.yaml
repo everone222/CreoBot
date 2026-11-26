@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: creo-bot
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: apt-get update && apt-get install -y ffmpeg && pip install -r requirements.txt
+    startCommand: python run.py
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: PHOTO_FRAME_SEC
+        value: "0.3"
+      - key: PHOTO_MIN_SEC
+        value: "7.0"
+      - key: PHOTO_MAX_SEC
+        value: "9.0"
